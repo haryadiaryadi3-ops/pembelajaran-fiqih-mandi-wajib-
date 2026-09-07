@@ -1,0 +1,956 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petualangan Belajar Fiqih: Mandi Wajib - TPQ 5 Utsman bin Affan</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f0fdf4;
+    }
+    .gradient-header {
+      background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #0f766e 100%);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- NAVBAR & TOP BAR -->
+  <header class="gradient-header text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="bg-amber-400 text-emerald-950 font-black px-3 py-1 rounded-xl text-xs md:text-sm flex items-center shadow">
+          <i class="fa-solid fa-mosque mr-2"></i> TPQ 5 Utsman bin Affan
+        </div>
+        <h1 class="hidden md:block font-bold text-base tracking-wide">Fiqih: Mandi Wajib Sesuai Sunnah</h1>
+      </div>
+      
+      <!-- GAMIFICATION STATS HEADER -->
+      <div class="flex items-center space-x-2 md:space-x-3">
+        <div class="bg-emerald-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-emerald-400/30 flex items-center space-x-1.5">
+          <i class="fa-solid fa-star text-amber-300 animate-pulse text-xs"></i>
+          <span class="text-[10px] md:text-xs font-semibold text-emerald-100">XP:</span>
+          <span id="user-xp" class="font-extrabold text-amber-300 text-xs md:text-sm">0</span>
+        </div>
+        <div class="bg-emerald-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-emerald-400/30 flex items-center space-x-1.5">
+          <i class="fa-solid fa-trophy text-amber-400 text-xs"></i>
+          <span id="badge-title" class="text-[10px] md:text-xs font-bold text-amber-200">Santri Pemula</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN NAVIGATION TABS -->
+    <nav class="bg-emerald-800/80 backdrop-blur-sm border-t border-emerald-600/40">
+      <div class="max-w-5xl mx-auto px-2 flex overflow-x-auto no-scrollbar justify-start md:justify-center space-x-1 py-1.5 text-xs font-semibold">
+        <button onclick="switchTab('pembuka')" id="nav-pembuka" class="nav-btn bg-emerald-900 text-amber-300 font-extrabold px-3 py-1.5 rounded-lg whitespace-nowrap transition">
+          <i class="fa-solid fa-compass mr-1.5"></i>Beranda
+        </button>
+        <button onclick="switchTab('materi')" id="nav-materi" class="nav-btn text-emerald-100 px-3 py-1.5 rounded-lg whitespace-nowrap transition">
+          <i class="fa-solid fa-book-open mr-1.5"></i>Materi Inti
+        </button>
+        <button onclick="switchTab('video')" id="nav-video" class="nav-btn text-emerald-100 px-3 py-1.5 rounded-lg whitespace-nowrap transition">
+          <i class="fa-solid fa-circle-play mr-1.5"></i>Video Tutorial
+        </button>
+        <button onclick="switchTab('game')" id="nav-game" class="nav-btn text-emerald-100 px-3 py-1.5 rounded-lg whitespace-nowrap transition">
+          <i class="fa-solid fa-gamepad mr-1.5"></i>Game Tata Cara
+        </button>
+        <button onclick="switchTab('kuis')" id="nav-kuis" class="nav-btn text-emerald-100 px-3 py-1.5 rounded-lg whitespace-nowrap transition">
+          <i class="fa-solid fa-clipboard-question mr-1.5"></i>Kuis Evaluasi
+        </button>
+        <button onclick="switchTab('misi')" id="nav-misi" class="nav-btn text-emerald-100 px-3 py-1.5 rounded-lg whitespace-nowrap transition">
+          <i class="fa-solid fa-bullseye mr-1.5"></i>Misi & Refleksi
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+
+    <!-- 1. HALAMAN PEMBUKA & APERSEPSI -->
+    <section id="section-pembuka" class="tab-content block space-y-6">
+      <!-- HERO BANNER -->
+      <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 rounded-3xl p-6 md:p-10 text-white relative overflow-hidden shadow-xl">
+        <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl font-black">✨</div>
+        <div class="relative z-10 max-w-2xl space-y-4">
+          <span class="inline-block bg-amber-400 text-emerald-950 font-bold text-xs uppercase px-3 py-1 rounded-full shadow">
+            🌟 PETUALANGAN BELAJAR ISLAMI
+          </span>
+          <h2 class="text-2xl md:text-4xl font-extrabold leading-tight">
+            Menyucikan Diri dengan Mandi Wajib Sesuai Sunnah Rasulullah SAW
+          </h2>
+          <p class="text-emerald-100 text-xs md:text-sm">
+            TPQ 5 Utsman bin Affan • Belajar bersuci jadi lebih menyenangkan, mudah dipahami, dan penuh nilai kebaikan!
+          </p>
+          <div class="pt-2 flex flex-wrap gap-3">
+            <button onclick="switchTab('materi')" class="bg-amber-400 hover:bg-amber-300 text-emerald-950 font-extrabold px-6 py-3 rounded-2xl shadow-lg transform transition active:scale-95 flex items-center space-x-2 text-xs md:text-sm">
+              <span>🚀 MULAI BELAJAR</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button onclick="switchTab('video')" class="bg-emerald-900/60 hover:bg-emerald-900 text-white font-bold px-5 py-3 rounded-2xl border border-emerald-400/40 transition flex items-center space-x-2 text-xs md:text-sm">
+              <i class="fa-solid fa-play text-amber-300"></i>
+              <span>Tonton Tutorial Video</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- APERSEPSI -->
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-4">
+        <div class="flex items-center space-x-3 text-emerald-700">
+          <div class="bg-emerald-100 p-3 rounded-xl text-xl">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <h3 class="font-bold text-base md:text-lg text-slate-800">Pernahkah Kamu Mengalami Hal Ini? 🤔</h3>
+        </div>
+        <p class="text-slate-600 leading-relaxed text-xs md:text-sm">
+          Bayangkan setelah berolahraga atau bermain di luar, badanmu terasa lengket dan kotor. Apa yang kamu lakukan? Tentu mandi biasa agar segar kembali! 
+          Tetapi, bagaimana jika diri kita mempunyai <strong>Hadas Besar</strong> (seperti mengalami mimpi basah saat tumbuh remaja kelak)? 
+          Apakah mandi biasa menggunakan sabun saja sudah cukup agar kita bisa kembali melaksanakan ibadah shalat?
+        </p>
+        <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-xl text-amber-900 text-xs md:text-sm">
+          <strong>Jawabannya: Belum cukup!</strong> Kita memerlukan tata cara khusus yang disebut <strong>Mandi Wajib (Mandi Janabah)</strong> agar ibadah shalat dan membaca Al-Qur'an kita kembali sah dan diterima Allah SWT.
+        </div>
+      </div>
+
+      <!-- TUJUAN BELAJAR -->
+      <div class="bg-emerald-50/70 rounded-2xl p-6 border border-emerald-200/60 space-y-4">
+        <h3 class="font-bold text-base md:text-lg text-emerald-900 flex items-center">
+          <span class="mr-2 text-xl">🎯</span> Target Capaian Belajar Hari Ini
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs md:text-sm">
+          <div class="bg-white p-4 rounded-xl border border-emerald-100 flex items-start space-x-3">
+            <span class="text-emerald-600 text-lg font-bold">1</span>
+            <div>
+              <p class="font-bold text-slate-800">Memahami Pengertian</p>
+              <p class="text-xs text-slate-500">Mampu menjelaskan beda mandi wajib dan mandi biasa.</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-emerald-100 flex items-start space-x-3">
+            <span class="text-emerald-600 text-lg font-bold">2</span>
+            <div>
+              <p class="font-bold text-slate-800">Membedakan Rukun & Sunah</p>
+              <p class="text-xs text-slate-500">Mengetahui mana syarat wajib dan mana penyempurna pahala.</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-emerald-100 flex items-start space-x-3">
+            <span class="text-emerald-600 text-lg font-bold">3</span>
+            <div>
+              <p class="font-bold text-slate-800">Menghafal Tata Cara Praktis</p>
+              <p class="text-xs text-slate-500">Mengurutkan langkah bersuci sesuai teladan Rasulullah SAW.</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-emerald-100 flex items-start space-x-3">
+            <span class="text-emerald-600 text-lg font-bold">4</span>
+            <div>
+              <p class="font-bold text-slate-800">Meneladani Adab Kebersihan</p>
+              <p class="text-xs text-slate-500">Menerapkan sikap cinta kebersihan dalam kehidupan sehari-hari.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. MATERI INTI -->
+    <section id="section-materi" class="tab-content hidden space-y-8">
+      
+      <!-- SUBMATERI 1: PENGERTIAN -->
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-4">
+        <div class="flex items-center space-x-3 border-b border-slate-100 pb-3">
+          <span class="bg-emerald-600 text-white font-bold px-3 py-1 rounded-lg text-xs">Bagian 1</span>
+          <h3 class="font-bold text-lg md:text-xl text-slate-800">Pengertian Mandi Wajib (Mandi Janabah)</h3>
+        </div>
+        
+        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+          <strong>Mandi Wajib</strong> (sering juga disebut <em>Mandi Janabah</em> atau <em>Mandi Besar</em>) adalah mengalirkan air yang suci lagi menyucikan ke <strong>seluruh tubuh</strong> dari ujung rambut hingga ujung kaki dengan niat untuk menghilangkan <strong>Hadas Besar</strong>.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="bg-sky-50 border border-sky-200 rounded-xl p-4 space-y-2">
+            <div class="text-sky-700 font-bold text-xs uppercase flex items-center">
+              <i class="fa-solid fa-lightbulb mr-1.5"></i>💡 Tahukah Kamu?
+            </div>
+            <p class="text-xs text-slate-700">
+              Mandi biasa hanya menyegarkan fisik, sedangkan Mandi Wajib menyucikan rohani dan menjadi syarat sah ibadah utama seperti Shalat dan Tawaf.
+            </p>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-2">
+            <div class="text-amber-700 font-bold text-xs uppercase flex items-center">
+              <i class="fa-solid fa-brain mr-1.5"></i>🧠 Ingat Ini!
+            </div>
+            <p class="text-xs text-slate-700 font-medium">
+              "Mandi Wajib = Air Menyiram Seluruh Tubuh + Niat Menghilangkan Hadas Besar."
+            </p>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 space-y-2">
+            <div class="text-emerald-700 font-bold text-xs uppercase flex items-center">
+              <i class="fa-solid fa-earth-americas mr-1.5"></i>🌍 Contoh Kehidupan
+            </div>
+            <p class="text-xs text-slate-700">
+              Saat remaja nanti mimpi basah atau setelah haid bagi anak perempuan, wajib mandi besar sebelum menunaikan shalat Subuh.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMATERI 2: RUKUN MANDI WAJIB -->
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-4">
+        <div class="flex items-center space-x-3 border-b border-slate-100 pb-3">
+          <span class="bg-emerald-600 text-white font-bold px-3 py-1 rounded-lg text-xs">Bagian 2</span>
+          <h3 class="font-bold text-lg md:text-xl text-slate-800">Rukun Mandi Wajib (Syarat Sah Utama)</h3>
+        </div>
+
+        <p class="text-slate-600 text-xs md:text-sm">
+          <strong>Rukun</strong> adalah hal-hal yang <em>wajib ada dan dilakukan</em>. Jika salah satu rukun tertinggal, maka mandi wajibnya tidak sah. Rukun Mandi Wajib hanya ada <strong>2 hal utama</strong>:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="border-2 border-emerald-500 bg-emerald-50/40 p-5 rounded-2xl flex items-start space-x-4">
+            <div class="bg-emerald-600 text-white p-3 rounded-xl font-black text-xl">1</div>
+            <div>
+              <h4 class="font-bold text-slate-800 text-sm md:text-base">Niat</h4>
+              <p class="text-xs text-slate-600 mt-1">
+                Sengaja dalam hati berniat menghilangkan hadas besar karena Allah SWT. Niat dilakukan saat air pertama kali disiramkan ke tubuh.
+              </p>
+            </div>
+          </div>
+
+          <div class="border-2 border-emerald-500 bg-emerald-50/40 p-5 rounded-2xl flex items-start space-x-4">
+            <div class="bg-emerald-600 text-white p-3 rounded-xl font-black text-xl">2</div>
+            <div>
+              <h4 class="font-bold text-slate-800 text-sm md:text-base">Membasuh Seluruh Tubuh Luar</h4>
+              <p class="text-xs text-slate-600 mt-1">
+                Rata mengalirkan air ke seluruh kulit dan rambut, termasuk lipatan tubuh, pori-pori kepala, dan sela-sela jemari tanpa ada yang terlewat.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-emerald-900 text-white p-4 rounded-xl text-xs space-y-1">
+          <span class="text-amber-300 font-bold">✨ Catatan Penting:</span>
+          <p>Meskipun hanya 2 rukun di atas, Rasulullah SAW mengajarkan sunah-sunah pengerjaan agar mandi kita sempurna, bersih, dan berlimpah pahala!</p>
+        </div>
+      </div>
+
+      <!-- SUBMATERI 3: SUNAH-SUNAH MANDI WAJIB -->
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-4">
+        <div class="flex items-center space-x-3 border-b border-slate-100 pb-3">
+          <span class="bg-emerald-600 text-white font-bold px-3 py-1 rounded-lg text-xs">Bagian 3</span>
+          <h3 class="font-bold text-lg md:text-xl text-slate-800">Sunah-Sunah Penambah Pahala</h3>
+        </div>
+
+        <p class="text-slate-600 text-xs md:text-sm">
+          Menjalankan sunah menjadikan mandi wajib kita persis seperti yang dicontohkan Rasulullah SAW (Hadits Shahih Muslim dari Ibunda Aisyah RA):
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span class="font-bold text-emerald-700 block mb-1">1. Membaca Basmalah</span>
+            Membaca <em>Bismillah</em> di dalam hati saat mulai bersuci.
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span class="font-bold text-emerald-700 block mb-1">2. Mencuci Tangan</span>
+            Mencuci kedua telapak tangan sebanyak 3 kali di awal.
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span class="font-bold text-emerald-700 block mb-1">3. Membersihkan Kemaluan</span>
+            Membersihkan bagian kotor/kemaluan memakai tangan kiri & sabun.
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span class="font-bold text-emerald-700 block mb-1">4. Berwudhu Sempurna</span>
+            Berwudhu seperti hendak melaksanakan shalat.
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span class="font-bold text-emerald-700 block mb-1">5. Menyela Pangkal Rambut</span>
+            Memasukkan jari-jari basah ke pori kepala hingga terasa merata.
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span class="font-bold text-emerald-700 block mb-1">6. Menyiram Kepala 3x</span>
+            Menyiram bagian kepala sebanyak 3 kali secara merata.
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span class="font-bold text-emerald-700 block mb-1">7. Mendahulukan Kanan</span>
+            Menyiram seluruh tubuh bagian kanan dahulu, lalu bagian kiri.
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span class="font-bold text-emerald-700 block mb-1">8. Berpindah Tempat</span>
+            Berpindah tempat sedikit saat membasuh kedua kaki di akhir.
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMATERI 4: TATA CARA LENGKAP -->
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-200 shadow-sm space-y-4">
+        <div class="flex items-center space-x-3 border-b border-emerald-200 pb-3">
+          <span class="bg-amber-500 text-emerald-950 font-extrabold px-3 py-1 rounded-lg text-xs">Bagian 4</span>
+          <h3 class="font-bold text-lg md:text-xl text-emerald-950">Alur Urutan Tata Cara Mandi Wajib Rasulullah SAW</h3>
+        </div>
+
+        <div class="space-y-3 text-xs md:text-sm">
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">1</span>
+            <p class="text-slate-800">Masuk kamar mandi dengan <strong>Kaki Kiri</strong> & membaca doa masuk kamar mandi.</p>
+          </div>
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">2</span>
+            <p class="text-slate-800">Mencuci kedua telapak tangan sebanyak 3 kali hingga bersih.</p>
+          </div>
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">3</span>
+            <p class="text-slate-800">Membersihkan kemaluan / kotoran menggunakan <strong>tangan kiri</strong> dan sabun pembersih.</p>
+          </div>
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">4</span>
+            <p class="text-slate-800">Berwudhu secara sempurna seperti wudhu untuk shalat.</p>
+          </div>
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">5</span>
+            <p class="text-slate-800">Menyela-nyela pangkal rambut di kepala dengan jari-jari tangan yang basah.</p>
+          </div>
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">6</span>
+            <p class="text-slate-800">Menyiramkan air ke atas kepala sebanyak 3 kali cidukan.</p>
+          </div>
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">7</span>
+            <p class="text-slate-800">Menyiramkan air ke seluruh anggota tubuh (Sisi Kanan dulu, baru Sisi Kiri).</p>
+          </div>
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">8</span>
+            <p class="text-slate-800">Berpindah tempat sedikit lalu membasuh kedua kaki hingga merata.</p>
+          </div>
+          <div class="flex items-center space-x-3 bg-white p-3 rounded-xl shadow-sm border border-emerald-100">
+            <span class="bg-emerald-600 text-white font-bold w-7 h-7 rounded-full flex items-center justify-center text-xs flex-shrink-0">9</span>
+            <p class="text-slate-800">Keluar kamar mandi dengan <strong>Kaki Kanan</strong> & membaca doa <em>"Ghufranaka"</em>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. VIDEO PEMBELAJARAN -->
+    <section id="section-video" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-4">
+        <div class="flex items-center space-x-3 text-emerald-800">
+          <div class="bg-red-100 text-red-600 p-3 rounded-xl text-xl">
+            <i class="fa-solid fa-circle-play"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg md:text-xl text-slate-800">🎬 YUK, NONTON TUTORIALNYA!</h3>
+            <p class="text-xs text-slate-500">Tutorial Mandi Wajib (Junub) Yang Diajarkan Rasulullah - Ustadz Adi Hidayat</p>
+          </div>
+        </div>
+
+        <!-- YOUTUBE EMBED -->
+        <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+          <iframe 
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/g-hGfOex740" 
+            title="Tutorial Mandi Wajib Ustadz Adi Hidayat"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="bg-sky-50 border border-sky-200 p-4 rounded-xl text-xs text-slate-700 space-y-1">
+          <span class="font-bold text-sky-800 flex items-center">
+            <i class="fa-solid fa-circle-info mr-1.5"></i> Petunjuk Menonton:
+          </span>
+          <p>Perhatikan bagaimana Ustadz Adi Hidayat memperagakan cuci tangan, wudhu, sela-sela rambut, hingga urutan membasuh kaki!</p>
+        </div>
+
+        <!-- TANTANGAN MENONTON -->
+        <div class="bg-emerald-50/70 p-5 rounded-2xl border border-emerald-200 space-y-3">
+          <h4 class="font-bold text-emerald-900 text-sm flex items-center">
+            <i class="fa-solid fa-magnifying-glass mr-2"></i> 🔎 TANTANGAN MENONTON (Cek Pemahamanmu)
+          </h4>
+          
+          <div class="space-y-2 text-xs">
+            <div class="bg-white p-3 rounded-lg border border-emerald-100">
+              <span class="font-bold text-emerald-700">Soal 1:</span> Kaki manakah yang dilangkahkan terlebih dahulu saat masuk kamar mandi?
+              <details class="mt-1 text-slate-500">
+                <summary class="cursor-pointer font-semibold text-emerald-600">Lihat Jawaban</summary>
+                Kaki Kiri (sambil membaca doa masuk kamar mandi).
+              </details>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-emerald-100">
+              <span class="font-bold text-emerald-700">Soal 2:</span> Mengapa saat menyela rambut di awal harus sampai meresap ke pori-pori?
+              <details class="mt-1 text-slate-500">
+                <summary class="cursor-pointer font-semibold text-emerald-600">Lihat Jawaban</summary>
+                Agar air dipastikan membasuh seluruh kulit kepala secara merata tanpa ada yang terlewat.
+              </details>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-emerald-100">
+              <span class="font-bold text-emerald-700">Soal 3:</span> Berapa kali siraman air ke atas kepala yang dicontohkan Rasulullah SAW?
+              <details class="mt-1 text-slate-500">
+                <summary class="cursor-pointer font-semibold text-emerald-600">Lihat Jawaban</summary>
+                Sebanyak 3 kali siraman.
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. GAME / INTERAKSI -->
+    <section id="section-game" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center space-x-3">
+            <div class="bg-amber-100 text-amber-600 p-3 rounded-xl text-xl">
+              <i class="fa-solid fa-puzzle-piece"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg md:text-xl text-slate-800">🧩 MINI GAME: URUTKAN TATA CARA</h3>
+              <p class="text-xs text-slate-500">Klik langkah-langkah di bawah sesuai urutan yang benar dari awal hingga akhir!</p>
+            </div>
+          </div>
+          <button onclick="resetGame()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg font-semibold transition">
+            🔄 Reset
+          </button>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 min-h-[140px] space-y-2">
+            <div class="text-xs font-bold text-emerald-800 mb-2 flex items-center justify-between">
+              <span>Urutan Pilihanmu:</span>
+              <span id="game-counter" class="text-xs text-emerald-600">0 / 5 Langkah Terpilih</span>
+            </div>
+            <div id="user-sequence" class="flex flex-wrap gap-2">
+              <p id="placeholder-text" class="text-xs text-slate-400 italic py-2">Klik tombol-tombol acak di bawah untuk menyusun urutannya...</p>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-slate-700">Pilihan Langkah (Klik satu per satu):</span>
+            <div id="game-options" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+
+          <div class="pt-2 flex justify-end">
+            <button onclick="checkGameResult()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-6 py-2.5 rounded-xl text-xs shadow-md transition transform active:scale-95">
+              ✅ Periksa Urutan
+            </button>
+          </div>
+
+          <div id="game-feedback" class="hidden p-4 rounded-xl text-xs font-bold"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. KUIS EVALUASI -->
+    <section id="section-kuis" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center space-x-3">
+            <div class="bg-emerald-100 text-emerald-700 p-3 rounded-xl text-xl">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg md:text-xl text-slate-800">📝 Kuis Evaluasi Pemahaman</h3>
+              <p class="text-xs text-slate-500">Uji pemahamanmu dengan 10 soal variatif!</p>
+            </div>
+          </div>
+          <span id="quiz-progress" class="text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full">
+            Soal <span id="current-q-num">1</span> dari 10
+          </span>
+        </div>
+
+        <div id="quiz-box" class="space-y-5">
+          <div class="space-y-2">
+            <span id="quiz-type-tag" class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md">Pilihan Ganda</span>
+            <h4 id="quiz-question" class="text-sm md:text-base font-bold text-slate-800 leading-snug">
+              Loading pertanyaan...
+            </h4>
+          </div>
+
+          <div id="quiz-options" class="space-y-2 text-xs md:text-sm">
+            <!-- Options rendered via JS -->
+          </div>
+
+          <div class="pt-2 flex justify-between items-center text-xs">
+            <button onclick="toggleHint()" class="text-amber-600 font-semibold hover:underline flex items-center space-x-1">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span>Butuh Bantuan Petunjuk?</span>
+            </button>
+            <button id="next-q-btn" onclick="nextQuestion()" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2 rounded-xl transition">
+              Soal Selanjutnya ➡️
+            </button>
+          </div>
+
+          <div id="hint-box" class="hidden bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-900">
+            💡 <span id="hint-text">...</span>
+          </div>
+
+          <div id="rationale-box" class="hidden p-4 rounded-xl text-xs space-y-1">
+            <p id="rationale-title" class="font-bold text-sm"></p>
+            <p id="rationale-text" class="text-slate-700"></p>
+          </div>
+        </div>
+
+        <!-- QUIZ RESULT SCREEN -->
+        <div id="quiz-result-screen" class="hidden text-center py-8 space-y-5">
+          <div class="text-6xl animate-bounce">🏆</div>
+          <div class="space-y-2">
+            <h3 class="text-2xl font-black text-slate-800">LEVEL SELESAI!</h3>
+            <p class="text-xs text-slate-500">Berikut adalah pencapaian kuis evaluasimu:</p>
+          </div>
+
+          <div class="inline-block bg-emerald-50 border-2 border-emerald-400 px-8 py-4 rounded-2xl">
+            <div id="final-score-text" class="text-4xl font-black text-emerald-700">0</div>
+            <div id="final-rating-badge" class="mt-2 inline-block bg-amber-400 text-emerald-950 font-bold text-xs px-3 py-1 rounded-full uppercase">
+              MASTER
+            </div>
+          </div>
+
+          <p id="final-motivation-text" class="text-xs text-slate-600 max-w-md mx-auto">
+            ...
+          </p>
+
+          <div class="pt-4">
+            <button onclick="restartQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition">
+              🔄 Coba Kuis Lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. MISI & REFLEKSI -->
+    <section id="section-misi" class="tab-content hidden space-y-6">
+      
+      <!-- MISI HARI INI -->
+      <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-emerald-950 rounded-2xl p-6 shadow-md space-y-3">
+        <div class="flex items-center space-x-2">
+          <span class="text-2xl">🏆</span>
+          <h3 class="font-extrabold text-lg md:text-xl">MISI HARI INI (Tantangan Praktik)</h3>
+        </div>
+        <p class="text-xs md:text-sm font-medium leading-relaxed">
+          Praktikkan atau ceritakan kembali urutan 9 tata cara mandi wajib sesuai sunnah Rasulullah SAW kepada orang tuamu di rumah malam ini! Mintalah orang tua menandatangani atau mengonfirmasi keberhasilan misimu.
+        </p>
+      </div>
+
+      <!-- REFLEKSI -->
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-4">
+        <h3 class="font-bold text-base md:text-lg text-slate-800 flex items-center space-x-2">
+          <span class="text-red-500">❤️</span>
+          <span>APA YANG AKU PELAJARI HARI INI?</span>
+        </h3>
+
+        <div class="space-y-4 text-xs md:text-sm">
+          <div class="space-y-1">
+            <label class="font-semibold text-slate-700">1. Hal baru apa yang paling menarik bagimu hari ini?</label>
+            <input type="text" placeholder="Tulis jawabanmu di sini..." class="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="font-semibold text-slate-700">2. Bagian manakah dari tata cara mandi wajib yang menurutmu paling penting?</label>
+            <input type="text" placeholder="Tulis jawabanmu di sini..." class="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="font-semibold text-slate-700">3. Mengapa kita harus selalu menjaga kesucian dan kebersihan diri?</label>
+            <input type="text" placeholder="Tulis jawabanmu di sini..." class="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none">
+          </div>
+          <button onclick="saveReflection()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition">
+            💾 Simpan Refleksi
+          </button>
+          <p id="reflection-msg" class="hidden text-xs text-emerald-600 font-bold">✨ MasyaAllah! Catatan refleksimu berhasil disimpan!</p>
+        </div>
+      </div>
+
+      <!-- RANGKUMAN -->
+      <div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm space-y-4">
+        <h3 class="font-bold text-base md:text-lg text-slate-800">📌 4 POIN WAJIB INGAT</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+          <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+            <span class="font-bold text-emerald-800 block mb-1">🟢 1. Beda Tujuan</span>
+            Mandi biasa untuk kebersihan fisik, mandi wajib menyucikan dari hadas besar.
+          </div>
+          <div class="bg-sky-50 p-4 rounded-xl border border-sky-200">
+            <span class="font-bold text-sky-800 block mb-1">🔵 2. Dua Rukun Utama</span>
+            Rukunnya hanya Niat dan Membasuh seluruh permukaan tubuh luar dengan air.
+          </div>
+          <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+            <span class="font-bold text-amber-800 block mb-1">🟡 3. Sunnah Rasulullah</span>
+            Diawali cuci tangan, wudhu, sela rambut, hingga menyiram kanan lalu kiri.
+          </div>
+          <div class="bg-orange-50 p-4 rounded-xl border border-orange-200">
+            <span class="font-bold text-orange-800 block mb-1">🟠 4. Sahnya Ibadah</span>
+            Tanpa bersuci dari hadas besar, shalat dan ibadah utama tidak sah.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-emerald-950 text-emerald-400 py-6 text-center text-xs border-t border-emerald-900">
+    <div class="max-w-5xl mx-auto px-4 space-y-2">
+      <p class="font-bold text-emerald-200">TPQ 5 Utsman bin Affan • Modul Interaktif Fiqih Mandi Wajib</p>
+      <p class="text-emerald-500">Referensi Pembelajaran: Tutorial Mandi Wajib Ustadz Adi Hidayat (Hadits Shahih Muslim dari Ibunda Aisyah RA)</p>
+    </div>
+  </footer>
+
+  <script>
+    let userXP = 0;
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-900', 'text-amber-300', 'font-extrabold');
+        btn.classList.add('text-emerald-100');
+      });
+
+      document.getElementById(`section-${tabId}`).classList.remove('hidden');
+      const activeNav = document.getElementById(`nav-${tabId}`);
+      if(activeNav) {
+        activeNav.classList.add('bg-emerald-900', 'text-amber-300', 'font-extrabold');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function addXP(amount) {
+      userXP += amount;
+      document.getElementById('user-xp').innerText = userXP;
+      updateBadge();
+    }
+
+    function updateBadge() {
+      const badgeEl = document.getElementById('badge-title');
+      if (userXP >= 150) {
+        badgeEl.innerText = "🌟 Master Fiqih";
+      } else if (userXP >= 80) {
+        badgeEl.innerText = "🚀 Santri Hebat";
+      } else if (userXP >= 40) {
+        badgeEl.innerText = "👍 Santri Rajin";
+      } else {
+        badgeEl.innerText = "Santri Pemula";
+      }
+    }
+
+    const correctSteps = [
+      "Cuci Kedua Telapak Tangan",
+      "Bersihkan Kemaluan dengan Tangan Kiri",
+      "Berwudhu Sempurna",
+      "Menyela Pangkal Rambut Kepala",
+      "Menyiram Seluruh Tubuh (Kanan & Kiri)"
+    ];
+
+    let userSequence = [];
+
+    function initGame() {
+      userSequence = [];
+      renderUserSequence();
+      
+      const shuffled = [...correctSteps].sort(() => Math.random() - 0.5);
+      const optionsContainer = document.getElementById('game-options');
+      optionsContainer.innerHTML = '';
+
+      shuffled.forEach(step => {
+        const btn = document.createElement('button');
+        btn.className = "p-3 bg-white border border-slate-200 hover:border-emerald-500 rounded-xl text-left font-medium text-slate-700 hover:bg-emerald-50 transition shadow-sm flex items-center justify-between";
+        btn.innerHTML = `<span>${step}</span> <i class="fa-solid fa-plus text-emerald-600"></i>`;
+        btn.onclick = () => selectStep(step, btn);
+        optionsContainer.appendChild(btn);
+      });
+
+      document.getElementById('game-feedback').classList.add('hidden');
+    }
+
+    function selectStep(step, btnElement) {
+      if (userSequence.length >= 5) return;
+      if (userSequence.includes(step)) return;
+
+      userSequence.push(step);
+      btnElement.classList.add('opacity-40', 'pointer-events-none');
+      renderUserSequence();
+    }
+
+    function renderUserSequence() {
+      const container = document.getElementById('user-sequence');
+      const counter = document.getElementById('game-counter');
+      counter.innerText = `${userSequence.length} / 5 Langkah Terpilih`;
+
+      if (userSequence.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400 italic py-2">Klik tombol-tombol acak di bawah untuk menyusun urutannya...</p>`;
+        return;
+      }
+
+      container.innerHTML = '';
+      userSequence.forEach((step, idx) => {
+        const tag = document.createElement('div');
+        tag.className = "bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center space-x-2";
+        tag.innerHTML = `<span>${idx + 1}. ${step}</span>`;
+        container.appendChild(tag);
+      });
+    }
+
+    function checkGameResult() {
+      const feedback = document.getElementById('game-feedback');
+      feedback.classList.remove('hidden');
+
+      if (userSequence.length < 5) {
+        feedback.className = "p-4 rounded-xl text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300";
+        feedback.innerText = "⚠️ Silakan pilih kelima langkah terlebih dahulu sebelum memeriksa!";
+        return;
+      }
+
+      let isCorrect = true;
+      for (let i = 0; i < correctSteps.length; i++) {
+        if (userSequence[i] !== correctSteps[i]) {
+          isCorrect = false;
+          break;
+        }
+      }
+
+      if (isCorrect) {
+        feedback.className = "p-4 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300 space-y-1";
+        feedback.innerHTML = `<div>🎉 MASYAALLAH, BENAR SEMUA! (+30 XP)</div><div class="font-normal">Kamu telah berhasil menyusun urutan tata cara mandi wajib sesuai sunnah Rasulullah SAW!</div>`;
+        addXP(30);
+        confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+      } else {
+        feedback.className = "p-4 rounded-xl text-xs font-bold bg-red-100 text-red-900 border border-red-300";
+        feedback.innerText = "❌ Urutannya belum tepat. Coba tekan 'Reset' dan susun kembali!";
+      }
+    }
+
+    function resetGame() {
+      initGame();
+    }
+
+    const quizData = [
+      {
+        type: "Pilihan Ganda",
+        question: "1. Mengalirkan air yang suci lagi menyucikan ke seluruh tubuh dengan niat menghilangkan hadas besar disebut...",
+        options: ["Mandi Biasa", "Mandi Wajib / Janabah", "Berwudhu", "Tayamum"],
+        correctIndex: 1,
+        hint: "Mandi ini membasahi seluruh tubuh dari ujung rambut hingga ujung kaki.",
+        rationale: "Mandi Wajib (Janabah) adalah ibadah bersuci khusus dari hadas besar dengan menyiram seluruh tubuh disertai niat."
+      },
+      {
+        type: "Pilihan Ganda",
+        question: "2. Ada berapa rukun utama dalam Mandi Wajib?",
+        options: ["2 Rukun", "5 Rukun", "7 Rukun", "10 Rukun"],
+        correctIndex: 0,
+        hint: "Rukunnya sangat sederhana: Niat dan Membasuh seluruh tubuh.",
+        rationale: "Rukun mandi wajib hanya ada 2: Niat dan Membasuh air ke seluruh permukaan tubuh bagian luar secara merata."
+      },
+      {
+        type: "Pilihan Ganda",
+        question: "3. Saat mulai melakukan mandi wajib, niat dilaksanakan pada waktu...",
+        options: ["Saat selesai mandi", "Saat air pertama kali disiramkan ke tubuh", "Saat memakai baju", "Sebelum masuk kamar mandi"],
+        correctIndex: 1,
+        hint: "Niat dilakukan berbarengan dengan awal pengerjaan ibadah.",
+        rationale: "Niat mandi wajib di dalam hati bersamaan dengan saat air pertama kali membasahi anggota tubuh."
+      },
+      {
+        type: "Pilihan Ganda",
+        question: "4. Anggota tubuh manakah yang didahulukan saat menyiramkan air seluruh badan?",
+        options: ["Bagian Kiri", "Bagian Kanan", "Bagian Belakang", "Langsung Kaki"],
+        correctIndex: 1,
+        hint: "Rasulullah SAW selalu menyukai mendahulukan anggota badan sebelah kanan.",
+        rationale: "Sunah Rasulullah SAW adalah menyiramkan air ke anggota tubuh bagian kanan terlebih dahulu baru kemudian bagian kiri."
+      },
+      {
+        type: "Benar / Salah",
+        question: "5. Benar atau Salah: Mandi biasa menggunakan sabun tanpa niat sudah bisa menghilangkan hadas besar.",
+        options: ["Benar", "Salah"],
+        correctIndex: 1,
+        hint: "Perhatikan rukun pertama mandi wajib.",
+        rationale: "Salah. Tanpa adanya NIAT menyucikan hadas besar, mandi tersebut hanya dinilai mandi biasa dan tidak menyucikan hadas besar."
+      },
+      {
+        type: "Benar / Salah",
+        question: "6. Benar atau Salah: Menurut penjelasan Ustadz Adi Hidayat, berwudhu sebelum menyiram tubuh merupakan sunah penambah pahala.",
+        options: ["Benar", "Salah"],
+        correctIndex: 0,
+        hint: "Wudhu dilakukan setelah mencuci tangan dan membersihkan kemaluan.",
+        rationale: "Benar. Berwudhu sebagaimana wudhu shalat adalah sunnah Rasulullah SAW untuk menyempurnakan mandi wajib."
+      },
+      {
+        type: "Mencocokkan Istilah",
+        question: "7. Pasangkan istilah berikut: Tindakan menyela-nyela pangkal rambut dengan jari basah bertujuan untuk...",
+        options: [
+          "Meratakan air ke pori-pori kulit kepala",
+          "Mewarnai rambut",
+          "Mengeringkan rambut",
+          "Membersihkan telinga"
+        ],
+        correctIndex: 0,
+        hint: "Tangan basah dimasukkan ke sela-sela rambut kepala.",
+        rationale: "Menyela rambut memastikan air meresap sempurna hingga ke pori-pori kulit kepala."
+      },
+      {
+        type: "Mencocokkan Istilah",
+        question: "8. Pasangkan adab kamar mandi: Kaki yang dilangkahkan saat KELUAR dari kamar mandi adalah...",
+        options: ["Kaki Kiri", "Kaki Kanan", "Dua Kaki Bersamaan", "Bebas Kaki Apa Saja"],
+        correctIndex: 1,
+        hint: "Masuk dengan kaki kiri, keluar dengan kaki...",
+        rationale: "Adab keluar tempat kotor/kamar mandi adalah mendahulukan kaki kanan sambil membaca doa 'Ghufranaka'."
+      },
+      {
+        type: "Studi Kasus Sehari-Hari",
+        question: "9. Ahmad selesai berolahraga bola dan mandi bersih dengan sabun. Namun kelak setelah remaja ia pernah mengalami mimpi basah tetapi lupa berniat mandi wajib. Apakah shalat Subuhnya sah?",
+        options: [
+          "Sah, karena badannya sudah wangi",
+          "Tidak sah, karena belum berniat menyucikan hadas besar",
+          "Sah, karena mandi biasa sudah cukup",
+          "Boleh memilih"
+        ],
+        correctIndex: 1,
+        hint: "Ingat syarat sah ibadah shalat dari hadas besar.",
+        rationale: "Shalatnya tidak sah karena bersuci dari hadas besar membutuhkan mandi wajib yang memenuhi rukun (disertai niat)."
+      },
+      {
+        type: "Studi Kasus Sehari-Hari",
+        question: "10. Fatimah mandi wajib dan membasuh seluruh tubuhnya, tetapi ada seujung kuku jari kakinya yang belum terkena air. Apa yang harus dilakukan?",
+        options: [
+          "Dibiarkan saja",
+          "Membasahi bagian yang terlewat tersebut dengan air",
+          "Mengulangi shalat tanpa wudhu",
+          "Cukup diusap kain kering"
+        ],
+        correctIndex: 1,
+        hint: "Seluruh bagian tubuh luar harus tersiram air.",
+        rationale: "Rukun mandi wajib mengharuskan air merata ke seluruh tubuh luar, sehingga bagian yang terlewat harus dibasahi air."
+      }
+    ];
+
+    let currentQ = 0;
+    let quizScore = 0;
+
+    function renderQuestion() {
+      const qData = quizData[currentQ];
+      document.getElementById('current-q-num').innerText = currentQ + 1;
+      document.getElementById('quiz-type-tag').innerText = qData.type;
+      document.getElementById('quiz-question').innerText = qData.question;
+      document.getElementById('hint-text').innerText = qData.hint;
+
+      document.getElementById('hint-box').classList.add('hidden');
+      document.getElementById('rationale-box').classList.add('hidden');
+      document.getElementById('next-q-btn').classList.add('hidden');
+
+      const optionsBox = document.getElementById('quiz-options');
+      optionsBox.innerHTML = '';
+
+      qData.options.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full p-3.5 bg-slate-50 border border-slate-200 hover:bg-emerald-50 hover:border-emerald-400 rounded-xl text-left font-medium text-slate-800 transition flex items-center justify-between";
+        btn.innerHTML = `<span>${optText}</span> <i class="fa-regular fa-circle text-slate-400"></i>`;
+        btn.onclick = () => handleAnswer(idx, btn);
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    function handleAnswer(selectedIndex, btnElement) {
+      const qData = quizData[currentQ];
+      const allButtons = document.getElementById('quiz-options').children;
+
+      for (let btn of allButtons) {
+        btn.onclick = null;
+        btn.classList.add('pointer-events-none');
+      }
+
+      const rationaleBox = document.getElementById('rationale-box');
+      const rationaleTitle = document.getElementById('rationale-title');
+      const rationaleText = document.getElementById('rationale-text');
+      rationaleBox.classList.remove('hidden');
+
+      if (selectedIndex === qData.correctIndex) {
+        btnElement.className = "w-full p-3.5 bg-emerald-100 border-2 border-emerald-500 rounded-xl text-left font-bold text-emerald-900 flex items-center justify-between";
+        btnElement.querySelector('i').className = "fa-solid fa-circle-check text-emerald-600 text-lg";
+        
+        rationaleBox.className = "p-4 rounded-xl text-xs bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-1";
+        rationaleTitle.innerText = "🎉 JAWABAN BENAR! (+10 XP)";
+        quizScore += 10;
+        addXP(10);
+      } else {
+        btnElement.className = "w-full p-3.5 bg-red-100 border-2 border-red-400 rounded-xl text-left font-bold text-red-900 flex items-center justify-between";
+        btnElement.querySelector('i').className = "fa-solid fa-circle-xmark text-red-600 text-lg";
+
+        allButtons[qData.correctIndex].className = "w-full p-3.5 bg-emerald-50 border-2 border-emerald-400 rounded-xl text-left font-bold text-emerald-800 flex items-center justify-between opacity-80";
+
+        rationaleBox.className = "p-4 rounded-xl text-xs bg-red-50 border border-red-200 text-red-900 space-y-1";
+        rationaleTitle.innerText = "❌ JAWABAN KURANG TEPAT";
+      }
+
+      rationaleText.innerText = qData.rationale;
+      document.getElementById('next-q-btn').classList.remove('hidden');
+    }
+
+    function toggleHint() {
+      document.getElementById('hint-box').classList.toggle('hidden');
+    }
+
+    function nextQuestion() {
+      currentQ++;
+      if (currentQ < quizData.length) {
+        renderQuestion();
+      } else {
+        showQuizResults();
+      }
+    }
+
+    function showQuizResults() {
+      document.getElementById('quiz-box').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+
+      const finalScoreEl = document.getElementById('final-score-text');
+      const ratingBadge = document.getElementById('final-rating-badge');
+      const motivationText = document.getElementById('final-motivation-text');
+
+      finalScoreEl.innerText = quizScore;
+
+      if (quizScore >= 90) {
+        ratingBadge.innerText = "🌟 MASTER";
+        motivationText.innerText = "MasyaAllah! Pemahamanmu sangat sempurna mengenai Fiqih Mandi Wajib. Pertahankan kebiasaan bersuci ini!";
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      } else if (quizScore >= 80) {
+        ratingBadge.innerText = "🚀 HEBAT";
+        motivationText.innerText = "Luar biasa! Kamu sudah memahami hampir seluruh rukun, sunah, dan tata cara mandi wajib dengan baik.";
+      } else if (quizScore >= 70) {
+        ratingBadge.innerText = "👍 BAGUS";
+        motivationText.innerText = "Bagus sekali! Kamu sudah memahami konsep dasar. Yuk baca ulang materi inti agar makin mahir!";
+      } else {
+        ratingBadge.innerText = "💪 AYO COBA LAGI";
+        motivationText.innerText = "Jangan berkecil hati! Pelajari kembali materi inti dan tonton video tutorialnya, lalu coba kuis ini lagi ya!";
+      }
+    }
+
+    function restartQuiz() {
+      currentQ = 0;
+      quizScore = 0;
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      document.getElementById('quiz-box').classList.remove('hidden');
+      renderQuestion();
+    }
+
+    function saveReflection() {
+      document.getElementById('reflection-msg').classList.remove('hidden');
+      addXP(15);
+    }
+
+    window.onload = () => {
+      initGame();
+      renderQuestion();
+    };
+  </script>
+</body>
+</html>
+```
